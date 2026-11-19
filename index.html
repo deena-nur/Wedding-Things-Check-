@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nurul &amp; Amir — Wedding RSVP</title>
+<style>
+  :root {
+    --blush: #f7e8ea;
+    --rose: #b76e79;
+    --rose-dark: #96525d;
+    --ink: #3d3436;
+    --muted: #7d7175;
+    --card: #ffffff;
+    --line: #ecdfe2;
+    --gold: #c9a86a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: #fdfaf8;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 50px;
+    background: linear-gradient(180deg, #fdf6f4 0%, #fdfaf8 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero img {
+    width: 220px; height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 6px 24px rgba(183, 110, 121, .25);
+    margin-bottom: 26px;
+  }
+  .eyebrow {
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: 44px;
+    color: var(--rose-dark);
+  }
+  .hero .date {
+    color: var(--muted);
+    margin: 8px 0 18px;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  .hero p.lede {
+    max-width: 560px;
+    margin: 0 auto 30px;
+    color: var(--muted);
+    font-size: 17px;
+  }
+  .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 13px 30px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1.5px solid transparent;
+    transition: all .2s ease;
+  }
+  .btn-wa { background: #25D366; color: #fff; }
+  .btn-wa:hover { background: #1eb455; }
+  .btn-outline { border-color: var(--rose); color: var(--rose-dark); background: #fff; }
+  .btn-outline:hover { background: var(--blush); }
+
+  /* Sections */
+  section { padding: 46px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--rose-dark);
+    text-align: center;
+    margin-bottom: 6px;
+  }
+  .sub { text-align: center; color: var(--muted); margin-bottom: 28px; font-size: 15px; }
+
+  /* Form */
+  form { max-width: 520px; margin: 0 auto; }
+  .field-label { font-weight: 600; font-size: 14px; margin-bottom: 10px; display: block; }
+  .choice { display: flex; gap: 12px; margin-bottom: 24px; }
+  .choice label {
+    flex: 1;
+    padding: 14px;
+    text-align: center;
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    cursor: pointer;
+    background: #fff;
+    font-weight: 600;
+    transition: all .15s ease;
+  }
+  .choice input { display: none; }
+  .choice label.yes.active { background: #eaf7ee; border-color: #4caf7d; color: #2e7d54; }
+  .choice label.no.active { background: #fbeaea; border-color: #c96a6a; color: #a04a4a; }
+  .count-row { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+  .count-row input {
+    width: 90px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    text-align: center;
+  }
+  .name-row input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 15px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    margin-bottom: 24px;
+  }
+  .confirm {
+    display: none;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin: 18px 0 0;
+    font-weight: 600;
+  }
+  .confirm.yes { display: block; background: #eaf7ee; color: #2e7d54; border: 1px solid #bfe3cd; }
+  .confirm.no { display: block; background: #fbeaea; color: #a04a4a; border: 1px solid #ecc8c8; }
+  .btn-submit {
+    width: 100%;
+    background: var(--rose);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-submit:hover { background: var(--rose-dark); }
+
+  /* Summary */
+  .stats { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 30px; }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 34px;
+    text-align: center;
+    min-width: 140px;
+    box-shadow: 0 2px 8px rgba(61,52,54,.05);
+  }
+  .stat .num { font-size: 34px; font-weight: 700; color: var(--rose-dark); }
+  .stat .lbl { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+  .stat.yes .num { color: #2e7d54; }
+  .stat.no .num { color: #a04a4a; }
+
+  table {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(61,52,54,.05);
+  }
+  th, td { padding: 12px 16px; text-align: left; font-size: 15px; }
+  th {
+    background: var(--blush);
+    color: var(--rose-dark);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+  td + td, th + th { border-left: 1px solid var(--line); }
+  tr + tr td { border-top: 1px solid var(--line); }
+  .badge { padding: 3px 12px; border-radius: 999px; font-size: 13px; font-weight: 600; }
+  .badge.yes { background: #eaf7ee; color: #2e7d54; }
+  .badge.no { background: #fbeaea; color: #a04a4a; }
+
+  footer { text-align: center; padding: 30px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=440&h=440&fit=crop" alt="Wedding photo">
+  <div class="eyebrow">The Wedding Of</div>
+  <h1>Nurul &amp; Amir</h1>
+  <p class="date">Saturday, 14 March 2027 · Shah Alam, Selangor</p>
+  <p class="lede">With joy in our hearts, we invite you to share in our special day. Kindly reply below so we can prepare a warm welcome for you and your loved ones.</p>
+  <div class="btn-row">
+    <a class="btn btn-wa" href="https://wa.me/60123456789?text=Hi%2C%20I%20have%20a%20question%20about%20Nurul%20%26%20Amir%27s%20wedding." target="_blank" rel="noopener">WhatsApp Us</a>
+    <a class="btn btn-outline" href="#rsvp">Start RSVP</a>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section id="rsvp">
+    <h2>RSVP</h2>
+    <p class="sub">Will you be joining us on our big day?</p>
+    <form id="rsvpForm">
+      <label class="field-label">Your reply</label>
+      <div class="choice">
+        <input type="radio" name="reply" id="replyYes" value="yes">
+        <label for="replyYes" class="yes" id="labelYes">Yes, joyfully accept</label>
+        <input type="radio" name="reply" id="replyNo" value="no">
+        <label for="replyNo" class="no" id="labelNo">No, sadly unable</label>
+      </div>
+      <label class="field-label" for="guestCount">Number of guests coming (including you)</label>
+      <div class="count-row">
+        <input type="number" id="guestCount" min="1" max="20" value="1">
+        <span style="color:var(--muted); font-size:14px;">pax</span>
+      </div>
+      <label class="field-label" for="guestName">Your name</label>
+      <div class="name-row">
+        <input type="text" id="guestName" placeholder="e.g. Siti Nurhaliza">
+      </div>
+      <button type="submit" class="btn-submit">Send My RSVP</button>
+      <div id="confirm" class="confirm"></div>
+    </form>
+  </section>
+
+  <section id="summary">
+    <h2>Guest Summary</h2>
+    <p class="sub">A quick overview for the happy couple</p>
+    <div class="stats">
+      <div class="stat"><div class="num" id="statHead">7</div><div class="lbl">Total Headcount</div></div>
+      <div class="stat yes"><div class="num" id="statYes">2</div><div class="lbl">Yes Replies</div></div>
+      <div class="stat no"><div class="num" id="statNo">1</div><div class="lbl">No Replies</div></div>
+    </div>
+    <table>
+      <thead>
+        <tr><th>Guest</th><th>Reply</th><th>Pax</th></tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </section>
+
+</div>
+
+<footer>Sample responses only — nothing is saved between visits. Made with love for Nurul &amp; Amir.</footer>
+
+<script>
+  // Example entries — specific to Malaysia, always visible from first load
+  let responses = [
+    { name: "Siti Nurhaliza", reply: "yes", pax: 4 },
+    { name: "Ahmad Faizal", reply: "yes", pax: 2 },
+    { name: "Lim Wei Jian", reply: "no", pax: 0 }
+  ];
+
+  const tbody = document.getElementById("tbody");
+  const statHead = document.getElementById("statHead");
+  const statYes = document.getElementById("statYes");
+  const statNo = document.getElementById("statNo");
+  const confirmBox = document.getElementById("confirm");
+
+  function render() {
+    tbody.innerHTML = "";
+    responses.forEach(function (r) {
+      const tr = document.createElement("tr");
+      tr.innerHTML =
+        "<td>" + r.name + "</td>" +
+        '<td><span class="badge ' + r.reply + '">' + (r.reply === "yes" ? "Yes" : "No") + "</span></td>" +
+        "<td>" + (r.reply === "yes" ? r.pax : 0) + "</td>";
+      tbody.appendChild(tr);
+    });
+    const yesList = responses.filter(function (r) { return r.reply === "yes"; });
+    statYes.textContent = yesList.length;
+    statNo.textContent = responses.length - yesList.length;
+    statHead.textContent = yesList.reduce(function (sum, r) { return sum + r.pax; }, 0);
+  }
+
+  // Feature 1: yes/no choice shown clearly while filling the form
+  const labelYes = document.getElementById("labelYes");
+  const labelNo = document.getElementById("labelNo");
+  document.getElementById("replyYes").addEventListener("change", function () {
+    labelYes.classList.add("active");
+    labelNo.classList.remove("active");
+    confirmBox.className = "confirm yes";
+    confirmBox.textContent = "You replied: Yes — we can't wait to celebrate with you!";
+  });
+  document.getElementById("replyNo").addEventListener("change", function () {
+    labelNo.classList.add("active");
+    labelYes.classList.remove("active");
+    confirmBox.className = "confirm no";
+    confirmBox.textContent = "You replied: No — you will be dearly missed!";
+  });
+
+  // Features 1 & 2: submitting adds the reply and updates headcount live
+  document.getElementById("rsvpForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = document.getElementById("guestName").value.trim() || "Anonymous Guest";
+    const choice = document.querySelector('input[name="reply"]:checked');
+    if (!choice) {
+      confirmBox.className = "confirm no";
+      confirmBox.textContent = "Please choose Yes or No first.";
+      return;
+    }
+    const pax = Math.max(1, parseInt(document.getElementById("guestCount").value, 10) || 1);
+    const existing = responses.findIndex(function (r) { return r.name === name; });
+    const entry = { name: name, reply: choice.value, pax: choice.value === "yes" ? pax : 0 };
+    if (existing >= 0) responses[existing] = entry; else responses.push(entry);
+    render();
+    confirmBox.className = "confirm " + choice.value;
+    confirmBox.textContent = choice.value === "yes"
+      ? "Thank you, " + name + "! " + pax + " seat" + (pax > 1 ? "s" : "") + " reserved. Headcount updated below."
+      : "Thank you, " + name + "! Your reply has been recorded below.";
+  });
+
+  // Feature 3: WhatsApp link is a plain <a href="https://wa.me/..."> — opens WhatsApp on tap/click.
+
+  render();
+</script>
+
+</body>
+</html>
